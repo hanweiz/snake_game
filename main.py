@@ -14,7 +14,7 @@ screen.bgcolor("black")
 screen.title("Snaky Eats its Tail")
 screen.tracer(0)
 
-# create snake body
+# initializes 3 segments of snake
 segments = []
 for index in range(START_SEGMENTS):
     seg = Turtle("square")
@@ -33,6 +33,7 @@ while is_game_on:
         x_new = segments[seg_idx - 1].xcor()
         y_new = segments[seg_idx - 1].ycor()
         segments[seg_idx].goto(x_new, y_new)
+        
     # then move the head
     segments[0].forward(20)
     segments[0].left(90)
