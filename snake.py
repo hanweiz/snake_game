@@ -10,7 +10,7 @@ class Snake:
         self.color = color
         self.shape = shape
         self.create_snake()
-        self.head = self.segments[0]
+        self.head = self.segments[0] 
 
     def create_snake(self):
         for index in range(START_SEGMENTS):

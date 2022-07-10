@@ -1,7 +1,8 @@
-from turtle import Turtle, Screen 
+from turtle import Screen 
 import random
 import time
 from snake import Snake
+from food import Food
 
 # create the screen background
 screen = Screen()
@@ -12,6 +13,7 @@ screen.tracer(0)
 
 is_game_on = True
 snake = Snake()
+food = Food()
 
 screen.listen()
 screen.onkey(snake.up, "Up")
