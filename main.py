@@ -28,8 +28,8 @@ screen.onkey(snake.right, "Right")
 
 while is_game_on:
     screen.update()
-    if food.count % 5 == 0:
-        config.SLEEP /= 1.01
+    if food.count % config.FOOD_PER_LEVEL == 0:
+        config.SLEEP /= config.SPEED_FACTOR
     time.sleep(config.SLEEP)
     snake.move()
 
@@ -41,16 +41,14 @@ while is_game_on:
     
     # detect collision with wall
     # assumes a playing area of +-280 in both x and y axis
-    if snake.head.xcor() > (config.WIDTH//2 - 20) or snake.head.xcor() < -(config.WIDTH//2 - 20) or snake.head.ycor() > (config.HEIGHT//2 - 20) or snake.head.ycor() < -(config.HEIGHT//2 - 20):
+    if snake.head.xcor() > (config.WIDTH//2 - 10) or snake.head.xcor() < -(config.WIDTH//2 - 10) or snake.head.ycor() > (config.HEIGHT//2 - 20) or snake.head.ycor() < -(config.HEIGHT//2 - 10):
         scoreboard.game_over()
         is_game_on = False
     
     # detect collision with tail
     # idea is to check if head collides with any of the body segments
-    for segment in snake.segments:
-        if segment == snake.head:
-            continue
-        elif segment.distance(snake.head) < 10:
+    for segment in snake.segments[1:]:
+        if segment.distance(snake.head) < 10:
             scoreboard.game_over()
             is_game_on = False
 
