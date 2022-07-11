@@ -3,13 +3,14 @@ import time
 from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
-HEIGHT = 800
-WIDTH = 800
-SLEEP = 0.1
+import config
+# HEIGHT = config.HEIGHT
+# WIDTH = config.WIDTH
+SLEEP = config.SLEEP
 
 # create the screen background
 screen = Screen()
-screen.setup(height=HEIGHT, width=WIDTH)
+screen.setup(height=config.HEIGHT, width=config.WIDTH)
 screen.bgcolor("black")
 screen.title("Snaky Eats its Tail")
 screen.tracer(0)
@@ -28,8 +29,8 @@ screen.onkey(snake.right, "Right")
 while is_game_on:
     screen.update()
     if food.count % 5 == 0:
-        SLEEP /= 1.01
-    time.sleep(SLEEP)
+        config.SLEEP /= 1.01
+    time.sleep(config.SLEEP)
     snake.move()
 
     # detect collision with food
@@ -40,7 +41,7 @@ while is_game_on:
     
     # detect collision with wall
     # assumes a playing area of +-280 in both x and y axis
-    if snake.head.xcor() > (WIDTH//2 - 20) or snake.head.xcor() < -(WIDTH//2 - 20) or snake.head.ycor() > (HEIGHT//2 - 20) or snake.head.ycor() < -(HEIGHT//2 - 20):
+    if snake.head.xcor() > (config.WIDTH//2 - 20) or snake.head.xcor() < -(config.WIDTH//2 - 20) or snake.head.ycor() > (config.HEIGHT//2 - 20) or snake.head.ycor() < -(config.HEIGHT//2 - 20):
         scoreboard.game_over()
         is_game_on = False
     

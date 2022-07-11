@@ -1,5 +1,6 @@
 import random
 from turtle import Turtle
+import config
 
 class Food(Turtle):
     def __init__(self):
@@ -13,7 +14,7 @@ class Food(Turtle):
         self.refresh()
     
     def refresh(self):
-        rnd_x = random.randint(-370, 370)
-        rnd_y = random.randint(-370, 370)
+        rnd_x = random.randint(-(config.WIDTH - 30), config.WIDTH - 30)
+        rnd_y = random.randint(-(config.WIDTH - 30), config.WIDTH - 30)
         self.goto(rnd_x, rnd_y)
         self.count += 1
